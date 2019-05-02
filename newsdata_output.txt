@@ -1,0 +1,19 @@
+
+A. The 3 most popular articles:
+
+1. Candidate is jerk, alleges rival (with 338647 visits)
+2. Bears love berries, alleges bear (with 253801 visits)
+3. Bad things gone, say good people (with 170098 visits)
+
+
+B. The authors ranked by popularity:
+
+1. Ursula La Multa (507594 article visits)
+2. Rudolf von Treppenwitz (423457 article visits)
+3. Anonymous Contributor (170098 article visits)
+4. Markoff Chaney (84557 article visits)
+
+
+The days on which more than 1% of requests lead to 404 error:
+Date: 2016-07-17; error percentage: 2.26
+
