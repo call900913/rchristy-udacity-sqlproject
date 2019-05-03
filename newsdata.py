@@ -3,14 +3,12 @@
 
 import psycopg2
 
-
-#open connection to database
+# open connection to database
 db = psycopg2.connect('dbname=news')
 cr = db.cursor()
 
 
-
-#What are the three most popular articles?
+# What are the three most popular articles?
 cr.execute("""
 SELECT articles.title, count
 FROM articles JOIN
@@ -27,8 +25,7 @@ for i (title, views) in enumerate(results1, 1):
     print('{}. {} (with {} visits)'.format(i, title, views))
 
 
-
-#Who are the most popular authors?
+# Who are the most popular authors?
 cr.execute("""CREATE VIEW view_01
 AS select author, sum(count)
    from articles join
@@ -52,8 +49,7 @@ for result in results2:
     print('%s. %s (%s article visits)' % (result[0], result[1], result[2]))
 
 
-
-#What are the days on which more than 1% of requests lead to errors?
+# What are the days on which more than 1% of requests lead to errors?
 cr.execute("""
 SELECT date, round(ep, 2)
 FROM (select a.date, (100.0 * numOfErroneousRequests / totalRequests) ep
@@ -72,7 +68,5 @@ for result in results3:
     print('Date: %s; error percentage: %s\n' % (result[0], result[1]))
 
 
-
-
-#close connection to database
+# close connection to database
 db.close()
