@@ -19,13 +19,13 @@ FROM articles JOIN
 ORDER BY count
 DESC limit 3
 """)
-result1 = cr.fetchall()
-print('\nA. The 3 most popular articles:')
-print()
-i = 0
-while i < len(result1):
-    print(('%s. ' % (i+1)) + result1[i][0] + ' (with %s visits)' % (result1[i][1]))
-    i += 1
+
+results1 = cr.fetchall()
+
+print('\nA. The 3 most popular articles:\n')
+for i (title, views) in enumerate(results1, 1):
+    print('{}. {} (with {} visits)'.format(i, title, views))
+
 
 
 #Who are the most popular authors?
@@ -44,12 +44,13 @@ SELECT authors.id, authors.name, sum
 FROM authors JOIN view_01 ON authors.id = view_01.author
 ORDER BY sum DESC
 """)
-result2 = cr.fetchall()
+
+results2 = cr.fetchall()
+
 print('\n\nB. The authors ranked by popularity:\n')
-i = 0
-while i < len(result2):
-    print('%s. %s (%s article visits)' % (result2[i][0], result2[i][1], result2[i][2]))
-    i += 1
+for result in results2:
+    print('%s. %s (%s article visits)' % (result[0], result[1], result[2]))
+
 
 
 #What are the days on which more than 1% of requests lead to errors?
@@ -63,15 +64,15 @@ FROM (select a.date, (100.0 * numOfErroneousRequests / totalRequests) ep
      where a.date = b.date) as result
 WHERE ep > 1
 """)
-result3 = cr.fetchall()
+
+results3 = cr.fetchall()
+
 print('\n\nThe days on which more than 1% of requests lead to 404 error:')
-i = 0
-while i < len(result3):
-    print('Date: %s; error percentage: %s\n' % (result3[0][0], result3[0][1]))
-    i += 1
+for result in results3:
+    print('Date: %s; error percentage: %s\n' % (result[0], result[1]))
 
 
 
 
-#close the connection to database
+#close connection to database
 db.close()
