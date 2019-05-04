@@ -1,10 +1,15 @@
 README
 
 
+# Logs Analysis
+## Project Description
 
-What This Program Does
 
 
+### Background
+
+
+### What This Program Does
 
 Perusing the data in the 'news' database, this program answers the following question:
 
@@ -16,7 +21,7 @@ If you'd like to obtain the answer to this question, you can run this program an
 
 
 
-How It Works
+### How It Works
 
 You need to have Python 3 installed on your machine. 
 
@@ -29,7 +34,7 @@ visit ttps://www.python.org/downloads/ for further instructions.
 
 
 
-Running the Program
+### Running the Program
 
 This program runs on the terminal.
 
