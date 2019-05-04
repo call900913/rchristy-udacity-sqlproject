@@ -16,4 +16,3 @@ B. The authors ranked by popularity:
 
 The days on which more than 1% of requests lead to 404 error:
 Date: 2016-07-17; error percentage: 2.26
-
