@@ -76,3 +76,15 @@ B, 'The authors ranked by popularity', lists the names of authors and the number
 
 C, 'The days on which more than 1% of requests lead to 404 error', lists when more than 1% end up in errors.
 (Percentage is calculated as 100.0 * x / y, where x is the number of errors in the day and y is the count of all the requests in that day.)
+
+
+note: this Python script makes use of the following `CREATE VIEW` statement:
+CREATE VIEW view_01
+AS select author, sum(count)
+   from articles join
+    (select path, count(*)
+    from log
+    where status = '200 OK'
+    group by path) as log1
+   on replace(path, '/article/', '')  = slug
+   group by author
