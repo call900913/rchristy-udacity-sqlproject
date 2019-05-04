@@ -1,10 +1,10 @@
 README
 
 # Logs Analysis
-## Project Description
+### Project Description
 
 
-### What This Program Does
+## What This Program Does
 
 Given a mock PostgreSQL database 'news' for a fictional news website, this Python script uses the psycopg2 library to analyze the database and produce a report that answers the following question:
 
@@ -15,7 +15,7 @@ Given a mock PostgreSQL database 'news' for a fictional news website, this Pytho
 Running this program gives you the answers to these questions.
 
 
-### Requirements
+## Requirements
 
 You need to have the following installed on your machine:
 
@@ -23,7 +23,7 @@ You need to have the following installed on your machine:
   * psycopg2 module
   * PostgreSQL
 
-## Checking for Python 3 installation
+### Checking for Python 3 installation
 
 To find out whether you have Python 3 installed on your machine, on a mac, open your Terminal application and type:
 python3 --version
@@ -33,19 +33,19 @@ Python 3.x.y
 visit ttps://www.python.org/downloads/ for further instructions.
 
 
-## Checking psycopg2 module
+### Checking psycopg2 module
 
 In your terminal, type `pip3 freeze | grep psycopg2`.
 
 If you don't have it installed, type `pip3 install psycopg2`.
 
 
-## PostgreSQL installation
+### PostgreSQL installation
 
 To find out whether your machine has PostgreSQL installed, you can type `which psql` into your terminal: if there is no output, you PostgreSQL is not yet installed.
 
 
-### Prerequisites
+## Prerequisites
 
 This script assumes you have access to the newsdata.sql file and the *news* database.
 If you do not have the newsdata.sql file, you can obtain a compressed version here:
@@ -58,7 +58,7 @@ Then, connect to the database with `psql -d news`.
 Next, import the newsdata.sql file to the database by typing `psql -d news -f newsdata.sql` and hit enter.
 
 
-### Running the Program
+## Running the Program
 
 This program runs on the terminal.
 
