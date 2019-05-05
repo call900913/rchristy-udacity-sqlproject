@@ -25,12 +25,11 @@ You need to have the following installed on your machine:
 
 ### Checking for Python 3 installation
 
-To find out whether you have Python 3 installed on your machine, on a mac, open your Terminal application and type:
-python3 --version
+To find out whether you have Python 3 installed on your machine:
+On a mac, open your Terminal application and type `python3 --version`.
 
-If it does not reply with something of the form
-Python 3.x.y
-visit ttps://www.python.org/downloads/ for further instructions.
+If it does not reply with something of the form `Python 3.x.y`,
+visit https://www.python.org/downloads/ for further instructions.
 
 
 ### Checking psycopg2 module

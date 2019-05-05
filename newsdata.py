@@ -7,6 +7,7 @@ import psycopg2
 db = psycopg2.connect('dbname=news')
 cr = db.cursor()
 
+
 def create_views():
     cr.execute("""CREATE VIEW view_01
     AS select author, sum(count)
@@ -18,6 +19,7 @@ def create_views():
        on replace(path, '/article/', '')  = slug
        group by author
     """)
+
 
 create_views()
 
@@ -42,9 +44,10 @@ def execute_query():
 
     cr.execute("""
     SELECT date, round(ep, 2)
-    FROM (select a.date, (100.0 * numOfErroneousRequests / totalRequests) ep
-         from (select date(time) as date, count(status) as numOfErroneousRequests
-              from log where status = '404 NOT FOUND' group by date(time)) AS a,
+    FROM (select a.date, (100.0 * numOfErrors / totalRequests) ep
+         from (select date(time) as date, count(status) as numOfErrors
+              from log where status = '404 NOT FOUND'
+              group by date(time)) AS a,
               (select date(time) as date, count(*) as totalRequests
               from log group by date(time)) AS b
          where a.date = b.date) as result
@@ -53,6 +56,7 @@ def execute_query():
     query3 = cr.fetchall()
 
     return query1, query2, query3
+
 
 results1, results2, results3 = execute_query()
 
@@ -63,14 +67,16 @@ def print_top_articles():
     for i, (title, views) in enumerate(results1, 1):
         print('{}. {} (with {} visits)'.format(i, title, views))
 
+
 def print_top_authors():
     # print the list of authors ranked by article views.
     print('\n\nB. The authors ranked by popularity:\n')
     for result in results2:
         print('%s. %s (%s article visits)' % (result[0], result[1], result[2]))
 
+
 def print_errors_over_one():
-    # print out the days on which more than 1% of logged requests lead to error.
+    # print out the days on which over 1% of logged requests lead to error.
     print('\n\nThe days on which more than 1% of requests lead to 404 error:')
     for result in results3:
         print('Date: %s; error percentage: %s\n' % (result[0], result[1]))
