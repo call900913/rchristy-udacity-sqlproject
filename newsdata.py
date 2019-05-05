@@ -43,7 +43,7 @@ def execute_query():
     query2 = cr.fetchall()
 
     cr.execute("""
-    SELECT date, round(ep, 2)
+    SELECT to_char(date, 'Mon DD, YYYY'), round(ep, 2)
     FROM (select a.date, (100.0 * numOfErrors / totalRequests) ep
          from (select date(time) as date, count(status) as numOfErrors
               from log where status = '404 NOT FOUND'
